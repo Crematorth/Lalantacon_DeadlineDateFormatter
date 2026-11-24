@@ -7,15 +7,18 @@ Original file is located at
     https://colab.research.google.com/drive/1gc1ysqT6wLhJL8NMfM31M-Fpzu5WG-vg
 """
 
+from datetime import datetime
+
 event_title = str(input("Enter the event title: "))
 year = int(input("Enter the year (Number): "))
 month = str(input("Enter the month (Word): "))
 day = int(input("Enter the day (Number): "))
-weekday = str(input("Enter the week day (Word): "))
+
+date = datetime.strptime(f"{month} {day}, {year}", "%B %d, %Y")
 
 print("Event:", event_title.upper())
-print("Date:", month.capitalize(),day,",",year)
-print("Year:", year)
-print("Month:", month.capitalize())
-print("Day:", day)
-print("Weekday:",weekday.capitalize())
+print("Date:", date.strftime("%B %d, %Y"))
+print("Year:", date.strftime("%Y"))
+print("Month:", date.strftime("%B"))
+print("Day:", date.strftime("%d").lstrip("0"))
+print("Weekday:", date.strftime("%A"))
